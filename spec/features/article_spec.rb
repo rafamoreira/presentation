@@ -1,6 +1,11 @@
 require 'rails_helper'
+include AuthHelper
 
 RSpec.feature "Articles", type: :feature do
+  before(:each) do
+    basic_auth("admin", "password123")
+  end
+
   context "New Article" do
     describe "Creating an Article with all required fields" do
       it "should save and redirect to the article" do
