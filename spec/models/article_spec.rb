@@ -25,4 +25,8 @@ RSpec.describe Article, type: :model do
       expect(@article.errors.messages).to eq(content: ["can't be blank"])
     end
   end
+
+  context "associations" do
+    it { should have_many(:comments).dependent(:destroy) }
+  end
 end

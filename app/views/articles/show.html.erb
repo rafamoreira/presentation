@@ -2,6 +2,32 @@
 
 <%= simple_format @article.content %>
 
+<h3>Leave a comment</h3>
+<%= render "comments/form" %>
+
+<h3>Comments:</h3>
+<% @comments.each do |c| %>
+<div class="row">
+  <div class="col">
+    <div class="row">
+      <div class="col">
+        <h4>Nome: <%= c.name %></h4>
+      </div>
+      <div class="col">
+        <%= link_to "Delete Comment", c, method: :delete, data: { confirm: "Are you sure?" }, id: dom_id(c) %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <h4><%= simple_format c.content %></h4>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% end %>
+
+
 <%= link_to 'Edit', edit_article_path(@article) %> |
 <%= link_to 'Back', articles_path %> |
 <%= link_to 'Destroy', @article, method: :delete, data: { confirm: 'Are you sure?' } %>
