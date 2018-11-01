@@ -1,9 +1,6 @@
 <h2><%= @article.title %></h2>
 
-<p>
-  <strong>Content:</strong>
-  <%= @article.content %>
-</p>
+<%= simple_format @article.content %>
 
 <%= link_to 'Edit', edit_article_path(@article) %> |
 <%= link_to 'Back', articles_path %> |
